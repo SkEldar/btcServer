@@ -1,0 +1,21 @@
+GET http://localhost:19002/users
+
+###
+
+POST http://localhost:19002/users
+Content-Type: application/json
+
+{
+    "name" : "micky",
+    "password" : "1234"
+}
+
+###
+
+POST http://localhost:19002/users/login
+Content-Type: application/json
+
+{
+    "name" : "micky",
+    "password" : "1234"
+}

@@ -1,10 +1,19 @@
 const express = require("express");
-
+const bcrypt = require("bcrypt");
 const app = express();
 const request = require("request");
+const token = require("jsonwebtoken");
+app.use(express.json());
+
+const users = [];
+
 app.get("/quotes", (req, result) => {
   result.setHeader("Access-Control-Allow-Origin", "*");
-  result.setHeader("Access-Control-Allow-Headers", "origin, content-type, accept");
+  result.setHeader(
+    "Access-Control-Allow-Headers",
+    "origin, content-type, accept"
+  );
+  
   let btc = "1";
   request(
     { url: "https://api.coindesk.com/v1/bpi/currentprice.json", json: true },
@@ -16,7 +25,6 @@ app.get("/quotes", (req, result) => {
       result.send(btc);
     }
   );
-  
 });
 
 app.listen(19002);
